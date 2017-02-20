@@ -15,4 +15,6 @@
         completions."
     </string>
     <string name="welcome_to_revature">Welcome To Revature</string>
+    <string name="log_in">Log In</string>
+    <string name="register">Register</string>
 </resources>
