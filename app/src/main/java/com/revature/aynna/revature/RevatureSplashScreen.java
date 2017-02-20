@@ -9,20 +9,17 @@ import android.view.View;
 public class RevatureSplashScreen extends AppCompatActivity {
 
     private static final String TAG = "Splash Screen";
+    private View gifLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revature_splash_screen);
-        View gifLoading = findViewById(R.id.revatureLoadingGif);
+        gifLoading = findViewById(R.id.revatureLoadingGif);
         long SPLASH_SCREEN_TIME = 3000L;
-        gifLoading.setVisibility(View.GONE);
-        gifLoading.animate();
-        gifLoading.setVisibility(View.VISIBLE);
         Log.v(TAG, "Width = " + gifLoading.getWidth() + "\nHeight = " + gifLoading.getHeight());
-
-
         animate();
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -36,6 +33,9 @@ public class RevatureSplashScreen extends AppCompatActivity {
 
     private void animate() {
 
+        gifLoading.setScaleX(1);
+        gifLoading.setScaleX(1);
+        gifLoading.animate().scaleX(0).scaleY(0).setDuration(1000).setStartDelay(1000);
 
     }
 }
