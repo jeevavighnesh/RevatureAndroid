@@ -38,7 +38,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="@string/or"
+        android:text="---------------------  OR  ---------------------"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/editText2"
@@ -52,7 +52,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/button"
         style="@android:style/Widget.Material.Button.Colored"
-        tools:targetApi="m"
         android:background="#f7a528"
         android:transitionName="logInButton"
         android:layout_alignParentBottom="true"
