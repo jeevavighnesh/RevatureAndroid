@@ -26,12 +26,34 @@ public class RevatureSplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_revature_splash_screen);
         logIn = findViewById(R.id.logIn);
         register = findViewById(R.id.register);
-        View star = findViewById(R.id.star);
+        View bar10 = findViewById(R.id.orangebar_10);
+        View bar9 = findViewById(R.id.orangebar_9);
+        View bar8 = findViewById(R.id.orangebar_8);
+        View bar7 = findViewById(R.id.orangebar_7);
+        View bar6 = findViewById(R.id.orangebar_6);
+        View bar5 = findViewById(R.id.orangebar_5);
+        View bar4 = findViewById(R.id.orangebar_4);
+        View bar3 = findViewById(R.id.orangebar_3);
+        View bar2 = findViewById(R.id.orangebar_2);
+        View bar1 = findViewById(R.id.orangebar_1);
+
         long SPLASH_SCREEN_TIME = 600L;
 
         logIn.setVisibility(View.INVISIBLE);
         register.setVisibility(View.INVISIBLE);
-        moveIt(star);
+//        bar10.setVisibility(View.GONE);
+        moveIt(bar1, 10f, -280f, -185f);
+        moveIt(bar2, 20f, -280f, -185f);
+        moveIt(bar3, 30f, -280f, -185f);
+        moveIt(bar4, 40f, -280f, -185f);
+        moveIt(bar5, 50f, -280f, -185f);
+        moveIt(bar6, 60f, -280f, -185f);
+        moveIt(bar7, 70f, -280f, -185f);
+        moveIt(bar8, 80f, -290f, -185f);
+        Log.v(TAG, "Hai " + bar9.getRotation());
+        moveIt(bar9, 90f, -302f, -185f);
+        Log.v(TAG, "Hai " + bar9.getRotation());
+        moveIt(bar10, 100f, -310f, -187f);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -45,25 +67,35 @@ public class RevatureSplashScreen extends AppCompatActivity {
 
     }
 
-    private void moveIt(final View view) {
+    private void moveIt(final View view, float endAngle, float rotationStart, float rotationEnd) {
 
         Log.v(TAG, "Animating star");
-        float x = 160;
-        float y = 380;
         Path path = new Path();
-        Log.v(TAG, "x: " + x + "y: " + y);
+        /*Animation rotate = new RotateAnimation(-210,-180);
+        rotate.setDuration(1000);
+        rotate.setFillAfter(true);
 
-        path.moveTo(x, y);
-        path.addArc(100, 200, 500, 400, -180, 120);
-        Log.v(TAG, "Animating star");
+        view.setAnimation(rotate);*/
 
-        ObjectAnimator objectAnimator =
+        ObjectAnimator rotate = ObjectAnimator.ofFloat(view ,
+                "rotation", rotationStart, rotationEnd);
+        rotate.setDuration(3000);
+        rotate.start();
+
+        path.addArc(130/*left*/, 90/*top*/, 485/*right*/, 300/*bottom*/, -160, endAngle);
+        Log.v(TAG, "!!!!Animating star Started!!!!");
+
+        ObjectAnimator curve =
                 ObjectAnimator.ofFloat(view, View.X,
                         View.Y, path);
 
-        objectAnimator.setDuration(3000);
-        Log.v(TAG, "Animating star");
-        objectAnimator.start();
+        curve.setDuration(3000);
+        Log.v(TAG, "!!!!Animating star DONE!!!!");
+        curve.start();
+//        AnimatorSet logo = new AnimatorSet();
+//        logo.playTogether(curve, rotate);
+
+
     }
 
     private void animateOffscreen(View view, float relativeDistance, int animationDuration) {

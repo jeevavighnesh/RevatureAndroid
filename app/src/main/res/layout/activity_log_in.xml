@@ -56,5 +56,6 @@
         android:background="#f7a528"
         android:transitionName="logInButton"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="onLogInClick" />
 </RelativeLayout>
